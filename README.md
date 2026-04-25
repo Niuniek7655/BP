@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 Zadanie Rekrutacyjne – Aplikacja Wiadomości
 
-## Getting Started
+## 🎯 Cel
 
-First, run the development server:
+Rozbudowa istniejącego projektu poprzez implementację formularza do dodawania wiadomości do bazy danych. Dodatkowo, wiadomości powinny być wyświetlane w tabeli z następującymi kolumnami: **ID**, **Wiadomość**, **Akcje**.
+
+---
+
+## ✅ Wymagania techniczne
+
+- **Node.js v18.17.0+**
+- **Docker v20.10.11+**
+- **Sequelize + migracje (`sequelize-cli`)**
+- **RTK Query (Redux Toolkit Query)**
+- **ShadCN UI (komponenty UI)**
+
+---
+
+## 🧠 Zakres zadania
+
+### 📝 Formularz dodawania wiadomości
+
+- Formularz umożliwia wprowadzenie treści wiadomości i dodanie jej do bazy danych.
+- Formularz musi posiadać walidację danych.
+
+### 📄 Tabela wiadomości
+
+- Tabela z kolumnami: **ID**, **Wiadomość**, **Akcje**.
+- Kolumna **Akcje** zawiera:
+  - 🔧 **Edytuj** – otwiera popup z formularzem do edycji wiadomości.
+  - ❌ **Usuń** – usuwa wiadomość po potwierdzeniu.
+
+### 🖥️ Backend
+
+- Własna implementacja obsługi zapytań do bazy danych (dodawanie, edytowanie, usuwanie).
+- **Zamień `sequelize.sync()` na migracje (`sequelize-cli`)**:
+  - Model wiadomości musi być utworzony przez migrację.
+  - W kodzie nie może być używany `sequelize.sync()`.
+- **Dodaj seeder**:
+  - Seeder dodający przynajmniej 3 przykładowe wiadomości.
+  - Możliwość uruchomienia przez:
+    ```bash
+    npx sequelize-cli db:seed:all
+    ```
+
+### 🔌 RTK Query
+
+- Komunikacja frontend ↔ backend musi być oparta w całości o RTK Query.
+
+### 🎨 ShadCN UI
+
+- UI musi korzystać z komponentów biblioteki **ShadCN**.
+- Interfejs powinien być estetyczny, intuicyjny i spójny.
+
+---
+
+## 🚀 Uruchomienie projektu
+
+1. Sklonuj repozytorium.
+2. W katalogu głównym uruchom:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Po uruchomieniu kontenery powinny:
+>
+> - automatycznie wykonać migracje,
+> - umożliwić pracę z aplikacją bez ręcznej konfiguracji.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Dystrybucja
 
-## Learn More
+1. Stwórz osobny branch `dev`.
+2. Po zakończeniu zadania utwórz pull request `dev → main`.
+3. Dodaj użytkownika `@BiznesportTech` jako **reviewera**.
+4. Upewnij się, że `@BiznesportTech` ma dostęp do repozytorium:
+   - `Settings → Collaborators → Invite a collaborator`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Weryfikacja
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Zadanie będzie oceniane na podstawie:
 
-## Deploy on Vercel
+- Poprawności działania po `docker compose up`.
+- Braku `sequelize.sync()` – tylko migracje.
+- Poprawnie zaimplementowanych seederów.
+- Czytelności i jakości kodu (frontend + backend).
+- Poprawnej integracji RTK Query i ShadCN UI.
+- Intuicyjności i estetyki interfejsu użytkownika.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✅ Checklista przed wysłaniem
+
+- [ ] Formularz dodaje wiadomości do bazy.
+- [ ] Edycja i usuwanie działają zgodnie z wymaganiami.
+- [ ] Brak `sequelize.sync()` – użyte migracje.
+- [ ] Seeder dodaje min. 3 wiadomości.
+- [ ] Frontend korzysta z RTK Query.
+- [ ] UI zbudowane z komponentów ShadCN.
+- [ ] Projekt uruchamia się poprawnie przez `docker compose up`.
+- [ ] Pull request z `dev` do `main` gotowy.
+- [ ] `@BiznesportTech` dodany jako współpracownik i reviewer.
+
+---
+
+💡 Powodzenia! W razie pytań skontaktuj się z zespołem BiznesportTech.
