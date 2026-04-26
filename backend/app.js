@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import { config } from "dotenv";
 
 // Initialize environment variables
@@ -8,10 +9,20 @@ config();
 // Import database connection (for checking connection)
 import sequelize from "./utils/database.js";
 
+// Import routes
+import messagesRouter from "./routes/messages.js";
+
 const app = express();
 
 // Middleware
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true
+}));
 app.use(bodyParser.json());
+
+// Routes
+app.use("/messages", messagesRouter);
 
 // Root route
 app.get("/", (req, res) => {
